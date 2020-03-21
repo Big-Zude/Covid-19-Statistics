@@ -81,7 +81,7 @@ export default function Cards() {
                   <CardContent className={classes.cardContent}>
                     <CardMedia className={classes.cardMedia} align="center" >                    
                       <Typography color="secondary" style={{ fontSize: 25 }}>
-                        Total Cases
+                        ToTal CASES
                       </Typography>
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
@@ -95,7 +95,7 @@ export default function Cards() {
                   <CardContent className={classes.cardContent}>
                     <CardMedia className={classes.cardMedia} align="center" >                    
                       <Typography color="secondary" style={{ fontSize: 25 }}>
-                        Total Deaths
+                        TOTAL DEATHS
                       </Typography>
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
@@ -109,7 +109,7 @@ export default function Cards() {
                   <CardContent className={classes.cardContent}>
                     <CardMedia className={classes.cardMedia} align="center" >
                       <Typography color="secondary" style={{ fontSize: 25 }}>
-                        Total Recovered
+                        TOTAL RECOVERED
                       </Typography>
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
