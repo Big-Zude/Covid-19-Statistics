@@ -5,11 +5,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-
+import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {  Button } from '@material-ui/core';
+
+
 
 
 
@@ -38,15 +39,16 @@ const useStyles = makeStyles(theme => ({
     marginRight: '13.5px',
     float: 'right',
     width: '100px',
-    paddingTop: '2%',
+    
     position: 'center',
     borderRadius: '10px',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     boxSizing: 'border-box'
 
   },
   cardMedia: {
     paddingTop: '6.25%', // 16:9
+    paddingButtom:'6.25%'
   },
   cardContent: {
     flexGrow: 1,
@@ -58,71 +60,70 @@ const useStyles = makeStyles(theme => ({
 export default function Cards() {
   const classes = useStyles();
   const [stats, handleStats] = useState([]);
-
-
-  console.log("TC", stats)
   useEffect(() => {
-    console.log('from use effect')
-    getCompanies()
-
+    FetchData()
   }, [])
 
-  const getCompanies = async () => {
-    const data = await fetch('https://corona.lmao.ninja/all');
+  const FetchData = async () => {
+    const data = await fetch('https://corona.lmao.ninja/all'); //data source
     const stats = await data.json();
     handleStats(stats)
-    console.log("Server res", stats)
   }
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
-       
+        {/* Card starts here */}
         <Container className={classes.cardGrid} maxWidth="600px">
-          <br /><br /><br /><br />
-          <Grid container spacing={0} justify="space-between">
-                <Card className={classes.card} variant="outlined">
+          <br/><br/>
+             <Grid container spacing={0} justify="space-evenly">
+               
+             <Card className={classes.card} variant="outlined">
                   <CardContent className={classes.cardContent}>
-                  <CardMedia className={classes.media}>
-                    {/* <CardMedia className={classes.cardMedia} align="center" /> */}
-                      {/* <LocationCityIcon color="primary" style={{ fontSize: 70 }} /> */}
-                      <Typography>
-                        Total Cases
-                        </Typography>
+                    <CardMedia className={classes.cardMedia} align="center" >                    
+                      <Typography color="secondary" style={{ fontSize: 25 }}>
+                        Total cases
+                      </Typography>
+                      <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
                       {stats.cases}
                       </Typography>
-                   </CardMedia>
+                    </CardMedia>
                   </CardContent>
                 </Card>
+
                 <Card className={classes.card} variant="outlined">
                   <CardContent className={classes.cardContent}>
-                    <CardMedia className={classes.cardMedia} align="center" >
-                      {/* <MoneyIcon color="primary" style={{ fontSize: 70 }} /> */}
-                      <Typography>
+                    <CardMedia className={classes.cardMedia} align="center" >                    
+                      <Typography color="secondary" style={{ fontSize: 25 }}>
                         Total Deaths
                       </Typography>
+                      <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
                       {stats.deaths}
                       </Typography>
                     </CardMedia>
                   </CardContent>
                 </Card>
+
                 <Card className={classes.card} variant="outlined">
                   <CardContent className={classes.cardContent}>
                     <CardMedia className={classes.cardMedia} align="center" >
-                      {/* <MonetizationOnIcon color="primary" style={{ fontSize: 70 }} /> */}
-                      <Typography>
+                      <Typography color="secondary" style={{ fontSize: 25 }}>
                         Total Recovered
                       </Typography>
+                      <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
                       {stats.recovered}
                       </Typography>
                     </CardMedia>
                   </CardContent>
                 </Card>
+
           </Grid>
+          <br/><br/>
         </Container>
+         {/* Card ends here */}
       </main>
     </React.Fragment>
   );

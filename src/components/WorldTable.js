@@ -7,16 +7,13 @@ class WorldTable extends React.Component {
     this.tableRef = React.createRef();
   }
   state = {
-    open: false,
     loading:false,
     stats: [],
-    
-    // companyInfo:''
   }
 
   componentDidMount() {
     this.setState({ loading: true })
-    fetch('https://corona.lmao.ninja/countries')
+    fetch('https://corona.lmao.ninja/countries') //data source
         .then(response => response.json())
         .then(res => {
             this.setState({ stats: res, loading: false }, () => console.log(res))
@@ -28,7 +25,7 @@ class WorldTable extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <MaterialTable
+        <MaterialTable style={{marginLeft:'10px', marginRight:'10px'}}
           title="Worldwide Covid-19 Stats"
           columns={[
             { title: 'Country', field: 'country' },
@@ -46,7 +43,7 @@ class WorldTable extends React.Component {
           actions={[
             {
               icon: 'refresh',
-              tooltip: 'Refresh Data',
+              tooltip: 'Refresh',
               isFreeAction: true,
               onClick: () => this.tableRef.current && this.tableRef.current.onQueryChange(),
             }, 

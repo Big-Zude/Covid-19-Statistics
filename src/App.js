@@ -7,7 +7,7 @@ import WorldTable from './components/WorldTable';
 function App() {
   return (
     <div className="App">
-     <Navbar/><br/><br/>
+     <Navbar/>
      <WorldTable/>
     </div>
   );
