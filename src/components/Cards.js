@@ -31,17 +31,16 @@ const useStyles = makeStyles(theme => ({
   },
 
   card: {
-    maxHeight: '100%',
+    maxHeight: '200%',
     display: 'block',
     flexDirection: 'column',
-    minWidth: '270px',
+    minWidth: '300px',
     marginLeft: '13.5px',
     marginRight: '13.5px',
     float: 'right',
     width: '100px',
-    
     position: 'center',
-    borderRadius: '10px',
+    borderRadius: '7px',
     justifyContent: 'space-evenly',
     boxSizing: 'border-box'
 
@@ -77,12 +76,12 @@ export default function Cards() {
         <Container className={classes.cardGrid} maxWidth="600px">
           <br/><br/>
              <Grid container spacing={0} justify="space-evenly">
-               
-             <Card className={classes.card} variant="outlined">
+
+             <Card className={classes.card} variant="outlined" elevation={3}>
                   <CardContent className={classes.cardContent}>
                     <CardMedia className={classes.cardMedia} align="center" >                    
                       <Typography color="secondary" style={{ fontSize: 25 }}>
-                        Total cases
+                        Total Cases
                       </Typography>
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
