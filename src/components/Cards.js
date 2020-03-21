@@ -81,7 +81,7 @@ export default function Cards() {
                   <CardContent className={classes.cardContent}>
                     <CardMedia className={classes.cardMedia} align="center" >                    
                       <Typography color="secondary" style={{ fontSize: 25 }}>
-                        ToTal CASES
+                        TOTAL CASES
                       </Typography>
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
