@@ -29,11 +29,11 @@ class WorldTable extends React.Component {
           title="Worldwide Covid-19 Stats"
           columns={[
             { title: 'Country', field: 'country' },
-            { title: 'Cases', field: 'cases' },
+            { title: 'Total Cases', field: 'cases' },
             { title: 'Current Cases', field: 'todayCases' },
-            { title: 'Deaths', field: 'deaths', type: 'text' },
+            { title: 'Total Deaths', field: 'deaths', type: 'text' },
             { title: 'Current Deaths', field: 'todayDeaths' },
-            { title: 'Recovered', field: 'recovered' },
+            { title: 'Recovered Patients', field: 'recovered' },
             { title: 'Active Patients', field: 'active' },
             { title: 'Critical Patients', field: 'critical' },
             { title: 'Cases/million', field: 'casesPerOneMillion' },
