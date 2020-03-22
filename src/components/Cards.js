@@ -1,5 +1,5 @@
+//importing packages starts here
 import React, { useState, useEffect } from 'react';
-
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -9,13 +9,9 @@ import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+//importing packages ends here
 
-
-
-
-
-
-
+//component styling starts here
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -54,15 +50,17 @@ const useStyles = makeStyles(theme => ({
   },
 
 }));
+//component styling ends here
 
-
+//function starts here
 export default function Cards() {
   const classes = useStyles();
   const [stats, handleStats] = useState([]);
   useEffect(() => {
     FetchData()
   }, [])
-
+  
+  //data fetching from the api
   const FetchData = async () => {
     const data = await fetch('https://corona.lmao.ninja/all'); //data source
     const stats = await data.json();
