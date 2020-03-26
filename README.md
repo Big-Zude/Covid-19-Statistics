@@ -9,6 +9,8 @@ git clone https://github.com/Big-Zude/Covid-19-Statistics.git
 
 cd covid
 
+Please install the following on your machine  <br/>                                                                              1. [node](https://nodejs.org/en/download/)  <br/>                                                                                2. [git](https://git-scm.com/download/win)
+
 To Install dependencies
 
 Run **npm install**
