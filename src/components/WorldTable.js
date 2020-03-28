@@ -57,7 +57,11 @@ class WorldTable extends React.Component {
           }
           
         />
-        <br/><br/><br/>
+        <br/>
+        <p>For a more Detailed Visualization of the information above follow the link below</p>
+        <a style={{textDecoration:'none', fontWeight:'bold', fontSize:'20px'}} 
+        href="https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd">COVID-19 Situation Dashboard</a>
+
       </React.Fragment>
     )
   }
