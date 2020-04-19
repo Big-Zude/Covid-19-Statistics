@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: theme.spacing(8),
-    backgroundColor: '#01579b'
+    backgroundColor: '#01579b',
   },
   icon: {
     marginRight: theme.spacing(2),
@@ -38,7 +38,8 @@ const useStyles = makeStyles(theme => ({
     position: 'center',
     borderRadius: '7px',
     justifyContent: 'space-evenly',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    
 
   },
   cardMedia: {
@@ -62,10 +63,15 @@ export default function Cards() {
   
   //data fetching from the api
   const FetchData = async () => {
-    const data = await fetch('https://corona.lmao.ninja/all'); //data source
-    const stats = await data.json();
+    const data = await fetch('https://corona.lmao.ninja/v2/all'); //data source
+    const stats = await data.json()
+    console.log(stats)
     handleStats(stats)
   }
+ 
+  const formatter = new Intl.NumberFormat('en')
+console.log(formatter.format(stats.cases))
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -83,7 +89,7 @@ export default function Cards() {
                       </Typography>
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
-                      {stats.cases}
+                      {formatter.format(stats.cases)}                
                       </Typography>
                     </CardMedia>
                   </CardContent>
@@ -97,7 +103,7 @@ export default function Cards() {
                       </Typography>
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
-                      {stats.deaths}
+                      {formatter.format(stats.deaths)}   
                       </Typography>
                     </CardMedia>
                   </CardContent>
@@ -111,12 +117,54 @@ export default function Cards() {
                       </Typography>
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 40 }}>
-                      {stats.recovered}
+                      {formatter.format(stats.recovered)}   
                       </Typography>
                     </CardMedia>
                   </CardContent>
                 </Card>
-
+                </Grid>
+                <br/>
+                <Grid container spacing={0} justify="space-evenly">
+                <Card className={classes.card} variant="outlined">
+                  <CardContent className={classes.cardContent}>
+                    <CardMedia className={classes.cardMedia} align="center" >
+                      <Typography color="secondary" style={{ fontSize: 25 }}>
+                        TOTAL TESTS
+                      </Typography>
+                      <Divider/>
+                      <Typography color="primary" style={{ fontSize: 40 }}>
+                      {formatter.format(stats.tests)}   
+                      </Typography>
+                    </CardMedia>
+                  </CardContent>
+                </Card>
+                <Card className={classes.card} variant="outlined">
+                  <CardContent className={classes.cardContent}>
+                    <CardMedia className={classes.cardMedia} align="center" >
+                      <Typography color="secondary" style={{ fontSize: 25 }}>
+                        TOTAL ACTIVE CASES
+                      </Typography>
+                      <Divider/>
+                      <Typography color="primary" style={{ fontSize: 40 }}>
+                      {formatter.format(stats.active)}   
+                      </Typography>
+                    </CardMedia>
+                  </CardContent>
+                </Card>
+                <Card className={classes.card} variant="outlined">
+                  <CardContent className={classes.cardContent}>
+                    <CardMedia className={classes.cardMedia} align="center" >
+                      <Typography color="secondary" style={{ fontSize: 25 }}>
+                        AFFECTED COUNTRIES
+                      </Typography>
+                      <Divider/>
+                      <Typography color="primary" style={{ fontSize: 40 }}>
+                     
+                      {formatter.format(stats.affectedCountries)}   
+                      </Typography>
+                    </CardMedia>
+                  </CardContent>
+                </Card>
           </Grid>
           <br/><br/>
         </Container>
