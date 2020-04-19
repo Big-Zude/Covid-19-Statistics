@@ -1,69 +1,149 @@
-import React from 'react';
-import MaterialTable from 'material-table';
+import React from "react"
+import MUIDataTable from "mui-datatables";
+import { createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
+
+
 
 class WorldTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.tableRef = React.createRef();
-  }
-  state = {
-    loading:false,
-    stats: [],
-  }
+    constructor(props) {
+        super(props);
+        this.tableRef = React.createRef();
+    }
+    state = {
+        stats: [],
+        loading: false
+    }
 
-  componentDidMount() {
-    this.setState({ loading: true })
-    fetch('https://corona.lmao.ninja/countries') //data source
-        .then(response => response.json())
-        .then(res => {
-            this.setState({ stats: res, loading: false }, () => console.log(res))
-        })
-        .catch(error => {
-            console.log(error)
-        })
-}
-  render() {
-    return (
-      <React.Fragment>
-        <MaterialTable style={{marginLeft:'10px', marginRight:'10px'}}
-          title="Worldwide Covid-19 Stats"
-          columns={[
-            { title: 'Country', field: 'country' },
-            { title: 'Total Cases', field: 'cases' },
-            { title: 'Current Cases', field: 'todayCases' },
-            { title: 'Total Deaths', field: 'deaths', type: 'text' },
-            { title: 'Current Deaths', field: 'todayDeaths' },
-            { title: 'Recovered Patients', field: 'recovered' },
-            { title: 'Active Patients', field: 'active' },
-            { title: 'Critical Patients', field: 'critical' },
-            { title: 'Cases/million', field: 'casesPerOneMillion' },
-            
-          ]}
-          data={this.state.stats}
-          actions={[
-            {
-              icon: 'refresh',
-              tooltip: 'Refresh',
-              isFreeAction: true,
-              onClick: () => this.tableRef.current && this.tableRef.current.onQueryChange(),
-            }, 
-          ]}
-          options={{
-            
-            headerStyle: {
-              backgroundColor: '#3f51b5',
-              color: '#FFF'
-            }}
+    getMuiTheme = () => createMuiTheme({
+        overrides: {
+            MUIDataTable: {
+                root: {
+                  backgroundColor: "inherit",
+                 
+                },
+                paper: {
+                  boxShadow: "none"
+                }
+              },
+          MUIDataTableBodyCell: {
+            root: {
+              backgroundColor: "none",
+              
+            }
           }
-          
-        />
-        <br/>
-        <p>For a more Detailed Visualization of the information above follow the link below</p>
-        <a style={{textDecoration:'none', fontWeight:'bold', fontSize:'20px'}} 
-        href="https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd">COVID-19 Situation Dashboard</a>
+        }
+      })
 
+      componentDidMount() {
+             this.setState({ loading: true })
+             fetch('https://corona.lmao.ninja/v2/countries') //data source
+                 .then(response => response.json())
+                 .then(res => {
+                     this.setState({ stats: res, loading: false }, () => console.log(res))
+                 })
+                 .catch(error => {
+                     console.log(error)
+                 })
+         }
+
+
+  
+
+    
+render(){
+    return(
+        <React.Fragment>
+          <div style={{marginLeft:'10px',marginRight:'10px'}}>   
+           <br/>
+            
+              <MuiThemeProvider theme={this.getMuiTheme()}>
+                <MUIDataTable 
+                    title={<h1 style={{float:'left',color: '#3f51b5',}}>Worldwide Covid-19 Stats</h1>}
+                    isLoading={this.state.loading}
+                    columns ={[
+                        {
+                            name: "country",
+                            label: "Country",
+                            options: {
+                            filter: true,
+                            sort: true,
+                            }
+                        },
+                        {
+                            name: "cases",
+                            label: "Total Cases",
+                            options: {
+                            filter: true,
+                            sort: false,
+                            }
+                        },
+                        {
+                            name: "todayCases",
+                            label: "Current Cases",
+                            options: {
+                            filter: true,
+                            sort: false,
+                            }
+                        },
+                        {
+                            name: "deaths",
+                            label: "Total Deaths",
+                            options: {
+                            filter: true,
+                            sort: false,
+                            }
+                        },
+                        {
+                            name: "todayDeaths",
+                            label: "Current Deaths",
+                            options: {
+                            filter: true,
+                            sort: false,
+                            }
+                        },
+                        {
+                            name: "recovered",
+                            label: "Recovered Patients",
+                            options: {
+                            filter: true,
+                            sort: false,
+                            }
+                        },
+                        {
+                            name: "active",
+                            label: "Active",
+                            options: {
+                            filter: true,
+                            sort: false,
+                            }
+                        },
+                        {
+                            name: "critical",
+                            label: "Critical Patients",
+                            options: {
+                            filter: true,
+                            sort: false,
+                            }
+                        },
+                    ]} 
+                    
+                    data = {this.state.stats}
+                    
+                    options = {{ 
+                      filter: true,
+                      
+                      rowHover:true,
+                      downloadOptions:{filename: 'CovidData.csv', separator: ','},
+                      //onRowClick:(selectedRow,otherprops)=>{console.log(selectedRow)}, 
+                      filterType: 'dropdown', 
+                      selectableRows: false,
+                      responsive: 'stacked',}}/>
+               </MuiThemeProvider>
+               <div style={{color:"#3f51b5" ,float:'left'}}>Created By: Zude Mwango And Associates</div>
+         </div>
       </React.Fragment>
     )
   }
 }
+
 export default WorldTable;
