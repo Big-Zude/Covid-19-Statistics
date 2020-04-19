@@ -62,7 +62,7 @@ export default function Cards() {
   
   //data fetching from the api
   const FetchData = async () => {
-    const data = await fetch('https://corona.lmao.ninja/countries/Zambia'); //data source
+    const data = await fetch('https://corona.lmao.ninja/v2/countries/Zambia'); //data source
     const stats = await data.json();
     handleStats(stats)
   }
@@ -84,7 +84,7 @@ export default function Cards() {
                       <Divider/>
                       <Typography color="primary" style={{ fontSize: 20 }}>
                         
-                      Total Cases ({stats.cases}), Cases Today ({stats.todayCases}), Total Deaths ({stats.deaths}), Deaths Today ({stats.todayDeaths}), Recovered ({stats.recovered}), Active ({stats.active}), Critical ({stats.critical}), Cases/Million ({stats.casesPerOneMillion})
+                      Total Cases ({stats.cases}), Cases Today ({stats.todayCases}), Total Deaths ({stats.deaths}), Deaths Today ({stats.todayDeaths}), Recovered Patients ({stats.recovered}), Active ({stats.active}), Critical Patients ({stats.critical})
                       
                       </Typography>
                       
