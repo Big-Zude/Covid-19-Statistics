@@ -111,7 +111,7 @@ render(){
                         },
                         {
                             name: "active",
-                            label: "Active",
+                            label: "Active Cases",
                             options: {
                             filter: true,
                             sort: false,
