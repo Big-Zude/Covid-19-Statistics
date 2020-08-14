@@ -46,10 +46,6 @@ class WorldTable extends React.Component {
                  })
          }
 
-
-  
-
-    
 render(){
     return(
         <React.Fragment>
@@ -134,7 +130,6 @@ render(){
                       
                       rowHover:true,
                       downloadOptions:{filename: 'CovidData.csv', separator: ','},
-                      //onRowClick:(selectedRow,otherprops)=>{console.log(selectedRow)}, 
                       filterType: 'dropdown', 
                       selectableRows: false,
                       responsive: 'stacked',}}/>
