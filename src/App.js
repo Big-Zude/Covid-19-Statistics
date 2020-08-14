@@ -10,8 +10,13 @@ import Cards from './components/Cards';
 
 function App() {
   return (
+    
     <div className="App">
       <Navbar />
+      {/* <div class="bingwidget" data-type="covid19" data-market="en-us" data-language="en-us"></div>
+      */}
+      
+      
       <iframe
         src="https://public.domo.com/cards/bWxVg"
         width="50%"
