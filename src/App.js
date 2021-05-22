@@ -1,10 +1,8 @@
 import React from 'react';
-//import fetch from './components/fetch'
 import './App.css';
 import Navbar from './components/Navbar';
 import WorldTable from './components/WorldTable';
-import Cards from './components/Cards';
-//import Zambia from './components/Zambia'
+
 
 
 
@@ -13,12 +11,10 @@ function App() {
     
     <div className="App">
       <Navbar />
-      {/* <div class="bingwidget" data-type="covid19" data-market="en-us" data-language="en-us"></div>
-      */}
-      
       
       <iframe
         src="https://public.domo.com/cards/bWxVg"
+        title='covid'
         width="50%"
         height="600"
         align="center"
