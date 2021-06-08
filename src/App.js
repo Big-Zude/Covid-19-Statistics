@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import WorldTable from './components/WorldTable';
-
+import Cards from './components/Cards'
 
 
 
@@ -22,7 +22,7 @@ function App() {
         marginwidth="0"
         frameborder="0">
         </iframe>
-      {/* <Cards/> */}
+      <Cards/>
       <WorldTable />
     </div>
   );
