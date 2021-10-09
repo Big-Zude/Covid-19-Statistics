@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import WorldTable from './components/WorldTable';
 import Cards from './components/Cards'
+import BarChart  from './components/barchart';
 
 
 
@@ -12,7 +13,7 @@ function App() {
     <div className="App">
       <Navbar />
       
-      <iframe
+      {/* <iframe
         src="https://public.domo.com/cards/bWxVg"
         title='covid'
         width="50%"
@@ -21,8 +22,9 @@ function App() {
         marginheight="0"
         marginwidth="0"
         frameborder="0">
-        </iframe>
-      <Cards/>
+        </iframe> */}
+      <Cards />
+      <BarChart/>
       <WorldTable />
     </div>
   );
